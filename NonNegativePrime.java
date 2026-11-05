@@ -4,10 +4,15 @@ public class NonNegativePrime {
     
     public static int getDivisor(int n) {
         if (n < 2) return -1;
-        for (int i = 2; i * i <= n; i++) {
-            if (n % i == 0) {
-                return i;
-            }
+        if (n ==2 || n == 3) return n;
+
+        if (n % 2 == 0) return 2;
+        if (n % 3 == 0) return 3;
+
+
+        for (int i = 5; i * i <= n; i += 6) {
+            if (n % i == 0) return i;
+            if (n % (i + 2) == 0) return i + 2;
         }
         return n;
     }
